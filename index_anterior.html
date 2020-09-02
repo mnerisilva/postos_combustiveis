@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #content {
+            text-transform: capitalize;
+        }
+
+        #content p {
+            margin: 0;
+            padding: 0;
+        }
+
+        #content h4 {
+            margin: 0;
+            padding-bottom: 10px;
+        }        
+    </style>
+</head>
+<body>
+    <div id="content"></div>
+    
+ <script>
+     const conteudo = document.querySelector("#content");
+     const url = 'https://my-json-server.typicode.com/mnerisilva/rest_postos/db';
+     fetch(url)
+     .then(response => response.json())
+     .then(data => 
+            {
+                /*console.log(data.postos[1])
+                conteudo.innerHTML = `<h4>${data.postos[1].nome}</h4>
+                <p>${data.postos[1].endereco.logradouro}, ${data.postos[1].endereco.numero}</p>
+                <p>${data.postos[1].endereco.bairro}</p>`;*/
+                const postos = data.postos;
+                console.log(postos);
+                const arrayPostos = postos.map(item => {
+                    console.log(item.nome);
+                    console.log(item.endereco.logradouro);
+                    console.log(item.endereco.bairro);
+                    return item.nome;
+                });
+                console.log(arrayPostos);
+            }
+        )
+ </script>
+
+</body>
+</html>
